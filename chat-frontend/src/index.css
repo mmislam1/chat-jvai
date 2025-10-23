@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container{
+  display:flex;
+  flex-direction: column;
+
+}
+
+.chat{
+  background-color: aqua;
+  max-width: 70%;
+  border-radius: 20px;
+
+}
+
