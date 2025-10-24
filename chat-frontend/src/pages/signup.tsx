@@ -1,11 +1,13 @@
 import React, { useState,useEffect } from "react";
 import  {useAppDispatch, useAppSelector}  from "../hooks/reduxHooks";
 import { register } from "../store/features/authSlice";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import SigninLayout from '../components/signinLayout'
-import 
+ 
 
 const SignupForm: React.FC = () => {
+
+    const Navigate=useNavigate()
     const dispatch = useAppDispatch();
     const { user,loading, error } = useAppSelector((state) => state.auth);
 
@@ -26,12 +28,13 @@ const SignupForm: React.FC = () => {
     };
 
     useEffect(
-        ()=>{if (user){Navigate('/chatRoom')}},[]
+        ()=>{if (user){Navigate('/')}},[]
     )
 
     return (
         <SigninLayout>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full max-w-md mx-auto">
+        <form onSubmit={handleSubmit} className="form flex flex-col gap-4 items-center w-full max-w-md mx-auto">
+            <h1> Sign Up and Join</h1>
             <input
                 type="text"
                 name="name"
@@ -71,7 +74,7 @@ const SignupForm: React.FC = () => {
             <button
                 type="submit"
                 disabled={loading}
-                className="bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+                className="button1 bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
             >
                 {loading ? "Registering..." : "Sign Up"}
             </button>
